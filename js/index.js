@@ -57,26 +57,24 @@ let logoutInitialized =
 
 function redirectToLogin() {
 
-  const currentPage =
-    window.location.pathname
-      .split("/")
-      .pop();
+
+const path =
+    window.location.pathname;
 
 
-  /*
-   * Your authentication page is index.html.
-   */
+const isIndexPage =
+    path.endsWith("/") ||
+    path.endsWith("/index.html");
 
-  if (
-    currentPage !== "index.html"
-  ) {
+if (!isIndexPage) {
 
     window.location.href =
-      "./index.html";
-
-  }
+        "./index.html";
 
 }
+
+}
+
 
 
 // ========================================
@@ -252,7 +250,7 @@ function initializeLogout() {
 
         /*
          * Auth state listener will
-         * redirect to auth.html.
+         * redirect to index.html.
          */
 
       } catch (error) {
